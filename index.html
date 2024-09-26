@@ -1,0 +1,79 @@
+<html> 
+<head>
+    <title>Greeting</title> 
+    <style>
+        #lbl {
+            font-family: inter;
+            font-size: xxx-large;
+            color: #342930;
+            padding: 5px;
+            border: 0px solid #ffffff;
+            text-align: center;
+            line-height: 1.5;
+            height: 85%;
+        }
+
+        #time {
+            font-size: xx-large;
+        }
+
+        #date {
+            font-size: xx-large;
+        }
+
+        body {
+            background-color: #C3B9FF;
+        }
+    </style>
+</head>
+<body>
+    <div id="lbl"></div>
+</body>
+
+<script>
+    var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    var today = new Date();
+    var hrs = today.getHours();
+    var mins = today.getMinutes();
+    var ampm = hrs >= 12 ? 'PM' : 'AM';
+
+    // Convert 24-hour format to 12-hour format
+    hrs = hrs % 12;
+    hrs = hrs ? hrs : 12; // If hour is 0, make it 12
+    mins = mins < 10 ? '0' + mins : mins; // Add leading zero if minutes are less than 10
+
+    var timeString = hrs + ':' + mins; // 12-hour formatted time
+
+    var dayOfWeek = weekday[today.getDay()];
+    var monthName = months[today.getMonth()];
+    var day = today.getDate();
+    var year = today.getFullYear();
+
+    // Format the greeting message
+    var greet;
+    if (hrs < 12 && ampm === 'AM')
+        greet = 'Rise and shine! Late na ba? Haha ';
+    else if (hrs >= 12 && ampm === 'PM' && hrs < 6)
+        greet = 'Konting tiis nalang! ';
+    else
+        greet = 'Uyyy! Tama na yan! ';
+
+    // Determine the time of day for the reminder
+    var remind;
+    if (hrs < 12 && ampm === 'AM')
+        remind = 'in the morning ';
+    else if (hrs >= 12 && ampm === 'PM' && hrs < 6)
+        remind = 'in the afternoon ';
+    else
+        remind = 'in the evening naaa';
+
+    // Combine everything into a formatted string
+    var formattedMessage = `It's ${dayOfWeek}, <b>${monthName} ${day} at ${timeString}</b> ${remind}`;
+
+    document.getElementById('lbl').innerHTML = greet + `<div id="time">${formattedMessage}</div>`;
+    
+</script> 
+
+</html>
