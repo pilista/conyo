@@ -44,7 +44,7 @@
     hrs = hrs ? hrs : 12; // If hour is 0, make it 12
     mins = mins < 10 ? '0' + mins : mins; // Add leading zero if minutes are less than 10
 
-    var timeString = hrs + ':' + mins; // 12-hour formatted time
+    var timeString = hrs + ':' + mins + ampm; // 12-hour formatted time
 
     var dayOfWeek = weekday[today.getDay()];
     var monthName = months[today.getMonth()];
@@ -63,11 +63,11 @@
     // Determine the time of day for the reminder
     var remind;
     if (hrs < 12 && ampm === 'AM')
-        remind = 'in the morning ';
+        remind = ' ';
     else if (hrs >= 12 && ampm === 'PM' && hrs < 6)
-        remind = 'in the afternoon ';
+        remind = 'hoo ';
     else
-        remind = 'in the evening naaa';
+        remind = 'naaa';
 
     // Combine everything into a formatted string
     var formattedMessage = `It's ${dayOfWeek}, <b>${monthName} ${day} at ${timeString}</b> ${remind}`;
