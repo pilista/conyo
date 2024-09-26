@@ -1,4 +1,4 @@
-<html> 
+<html>  
 <head>
     <title>Greeting</title> 
     <style>
@@ -17,10 +17,6 @@
             font-size: large;
         }
 
-        #date {
-            font-size: large;
-        }
-
         body {
             background-color: #C3B9FF;
         }
@@ -32,19 +28,19 @@
 
 <script>
     var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
 
     var today = new Date();
     var hrs = today.getHours();
     var mins = today.getMinutes();
     var ampm = hrs >= 12 ? 'PM' : 'AM';
 
-    // Convert 24-hour format to 12-hour format
+   
     hrs = hrs % 12;
-    hrs = hrs ? hrs : 12; // If hour is 0, make it 12
-    mins = mins < 10 ? '0' + mins : mins; // Add leading zero if minutes are less than 10
+    hrs = hrs ? hrs : 12; 
+    mins = mins < 10 ? '0' + mins : mins; 
 
-    var timeString = hrs + ':' + mins + ampm; // 12-hour formatted time
+    var timeString = hrs + ':' + mins + ampm; 
 
     var dayOfWeek = weekday[today.getDay()];
     var monthName = months[today.getMonth()];
