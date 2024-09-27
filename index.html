@@ -3,7 +3,7 @@
     <title>Greeting</title> 
     <style>
         #lbl {
-            font-family: inter;
+            font-family: arial;
             font-size: x-large;
             color: #342930;
             padding: 5px;
@@ -40,7 +40,7 @@
     hrs = hrs ? hrs : 12; 
     mins = mins < 10 ? '0' + mins : mins; 
 
-    var timeString = hrs + ':' + mins + ampm; 
+    var timeString = hrs + ':' + mins + ' ' + ampm;
 
     var dayOfWeek = weekday[today.getDay()];
     var monthName = months[today.getMonth()];
@@ -50,11 +50,11 @@
     // Format the greeting message
     var greet;
     if (hrs < 12 && ampm === 'AM')
-        greet = 'Rise & shine! Late ba? Haha ';
+        greet = 'Rise & shine! Late ba? 🤣 ';
     else if (hrs >= 12 && ampm === 'PM' && hrs < 6)
-        greet = 'Konting tiis nalang! ';
+        greet = 'Good afternoon, tara coffee?';
     else
-        greet = 'Uyyy! Tama na yan! ';
+        greet = 'Good evening, pahinga-pahinga rin!';
 
     // Determine the time of day for the reminder
     var remind;
