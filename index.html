@@ -4,7 +4,7 @@
     <style>
         #lbl {
             font-family: inter;
-            font-size: xx-large;
+            font-size: x-large;
             color: #342930;
             padding: 5px;
             border: 0px solid #ffffff;
@@ -50,7 +50,7 @@
     // Format the greeting message
     var greet;
     if (hrs < 12 && ampm === 'AM')
-        greet = 'Rise and shine! Late na ba? Haha ';
+        greet = 'Rise & shine! Late ba? Haha ';
     else if (hrs >= 12 && ampm === 'PM' && hrs < 6)
         greet = 'Konting tiis nalang! ';
     else
@@ -66,7 +66,7 @@
         remind = 'naaa';
 
     // Combine everything into a formatted string
-    var formattedMessage = `It's ${dayOfWeek}, <b>${monthName} ${day} at ${timeString}</b> ${remind}`;
+    var formattedMessage = `Today is ${dayOfWeek}, <b>${monthName} ${day} at ${timeString}</b> ${remind}`;
 
     document.getElementById('lbl').innerHTML = greet + `<div id="time">${formattedMessage}</div>`;
     
