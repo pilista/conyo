@@ -31,42 +31,42 @@
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     var today = new Date();
-    var hrs = today.getHours();
+    var hrs24 = today.getHours();  // Original 24-hour value
     var mins = today.getMinutes();
-    var ampm = hrs >= 12 ? 'PM' : 'AM';
+    var ampm = hrs24 >= 12 ? 'PM' : 'AM';
 
-   
-    hrs = hrs % 12;
-    hrs = hrs ? hrs : 12; 
+    // Convert 24-hour format to 12-hour format
+    var hrs12 = hrs24 % 12;
+    hrs12 = hrs12 ? hrs12 : 12; 
     mins = mins < 10 ? '0' + mins : mins; 
 
-    var timeString = hrs + ':' + mins + ' ' + ampm;
+    var timeString = hrs12 + ':' + mins + ' ' + ampm;
 
     var dayOfWeek = weekday[today.getDay()];
     var monthName = months[today.getMonth()];
     var day = today.getDate();
     var year = today.getFullYear();
 
-    // Format the greeting message
+    // Format the greeting message based on the original 24-hour value
     var greet;
-    if (hrs < 12 && ampm === 'AM')
+    if (hrs24 < 12)
         greet = 'Rise & shine! Late ba? 🤣 ';
-    else if (hrs >= 12 && ampm === 'PM' && hrs < 6)
+    else if (hrs24 >= 12 && hrs24 < 18)
         greet = 'Good afternoon, tara coffee?';
     else
         greet = 'Good evening, pahinga-pahinga rin!';
 
     // Determine the time of day for the reminder
     var remind;
-    if (hrs < 12 && ampm === 'AM')
+    if (hrs24 < 12)
         remind = ' ';
-    else if (hrs >= 12 && ampm === 'PM' && hrs < 6)
+    else if (hrs24 >= 12 && hrs24 < 18)
         remind = 'hoo ';
     else
         remind = 'naaa';
 
     // Combine everything into a formatted string
-    var formattedMessage = `Today is <b>${monthName} ${day}, ${year} `;
+    var formattedMessage = `Today is <b>${monthName} ${day}, ${year}</b> at <b>${timeString}</b>`;
 
     document.getElementById('lbl').innerHTML = greet + `<div id="time">${formattedMessage}</div>`;
     
